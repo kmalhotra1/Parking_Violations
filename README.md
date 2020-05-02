@@ -76,3 +76,28 @@ ________________________________________________________________________________
 ![](Images/output.txt_command.png)
 
 ____________________________________________________________________________________________________________________________
+# Part 3: Visualizing and Analysis on Kibana
+1) cd into Part_3
+2) docker-compose build pyth
+3) docker-compose up -d
+4) Loaded 200,000 parking Violations to ElasticSearch:\
+&nbsp;&nbsp;&nbsp;&nbsp;- docker-compose run -e APP_KEY={YOUR_APP_KEY} -v $(pwd):/app/out pyth python -m main --page_size=100 --num_pages=2000 --output=./results.json
+5) docker-compose down
+
+_I conducted an anlysis around 2016 because during that year I actually had to drive pretty often over the weekends. So, naturally, I was curious._ Below are exploratory data analysis diagrams I obtained through Kibana.
+
+1) _Fine Amount by Issuing Agency With Respect to County_
+![](Images/3.png)
+
+2) _Violation Type by Precinct_
+![](Images/4.png)
+
+3) _Fine Amount by Volume (Heat Map)_
+Interestingly this is skewed heavily, the kurtosis on this must be very high!
+![](Images/5.png)
+
+4) _Average Fine Reduction by County_
+![](Images/6.png)
+
+5) _Median Fine Amount by County_
+![](Images/7.png)
