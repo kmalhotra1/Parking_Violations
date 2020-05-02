@@ -39,3 +39,40 @@ ________________________________________________________________________________
 
 ### That's all folks, it should be deployed to Dockerhub. On your docker, just click into the repo to make sure.
 ____________________________________________________________________________________________________________________________
+
+# Part 2: Loading into ElasticSearch
+
+### SSH into an AWS EC2 instance. Leverage docker-compose to bring up a service that encapsulates your bigdata1 container and an elastic search container and ensures they are able to interact through a few curl requests in terminal against http://localhost:9200. 
+
+1) Create an instance on AWS EC2 with the necessary parameters and download the pem file
+
+2) cd into the folder containing your .pem file (I put it inside my Part_2 document)
+
+3) make sure your .pem file is read only\
+&nbsp;&nbsp;&nbsp;&nbsp;- chmod 0400 ./{PEM FILE YOU DOWNLOADED}
+  
+4) SSH into EC2, this should prompt the command line to initiate with ubuntu@ip-###-##-##-###\
+&nbsp;&nbsp;&nbsp;&nbsp;- ssh -i ./{PEM FILE YOU DOWNLOADED} @ubuntu{YOUR IPv4 Public IP}\
+
+
+
+5) Now if you do not have docker installed, install it. If you do, feel free to skip this step:
+   (Note: to check if you have docker installed simply type "docker" in the term)\
+&nbsp;&nbsp;&nbsp;&nbsp;- sudo apt install docker.io
+
+6) Loginto Docker through EC2:\
+&nbsp;&nbsp;&nbsp;&nbsp;- sudo docker login --username=krm444
+  
+7) Pull the Docker image into EC2 (command following "sudo" can be obtained directly from your Dockerhub):\
+&nbsp;&nbsp;&nbsp;&nbsp;- sudo docker pull krm444/bigdata1:1.0 
+
+8) Run the container!:\
+&nbsp;&nbsp;&nbsp;&nbsp;- sudo docker run -e APP_KEY={YOUR_APP_KEY} -v $(pwd):/app/out -it krm444/bigdata1:1.0 python -m main --page_size=1 --num_pages=2 --output=results.json
+  
+9) Run a few curl requests in terminal against http://localhost:9200 to ensure interaction. I have committed an output.txt file that contains a few curl requests in the Part_2 folder. Following command was executed in terminal:
+
+&nbsp;&nbsp;&nbsp;&nbsp;- curl -o output.txt http://localhost:9200/opcv-index/_search\?q\=state:NY\&size\=10000 
+
+![](Images/output.txt_command.png)
+
+____________________________________________________________________________________________________________________________
