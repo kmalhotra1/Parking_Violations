@@ -69,7 +69,7 @@ ________________________________________________________________________________
 8) Run the container!:\
 &nbsp;&nbsp;&nbsp;&nbsp;- sudo docker run -e APP_KEY={YOUR_APP_KEY} -v $(pwd):/app/out -it krm444/bigdata1:1.0 python -m main --page_size=1 --num_pages=2 --output=results.json
   
-9) Run a few curl requests in terminal against http://localhost:9200 to ensure interaction. I have committed an output.txt file that contains a few curl requests in the Part_2 folder. Following command was executed in terminal:
+9) Run a few curl requests in terminal against http://localhost:9200 to ensure interaction. I have committed an output.txt file that contains a few curl requests. Following command was executed in terminal:
 
 &nbsp;&nbsp;&nbsp;&nbsp;- curl -o output.txt http://localhost:9200/opcv-index/_search\?q\=state:NY\&size\=10000 
 
