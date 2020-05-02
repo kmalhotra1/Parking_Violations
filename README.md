@@ -11,7 +11,7 @@ ________________________________________________________________________________
 ### Create the necessary folders and cd into the directory. Once the environment is properly contained, we can begin deployment.
 
 1) Login to docker via terminal:\
-&nbsp;&nbsp;&nbsp;&nbsp;- docker login --username=krm444
+&nbsp;&nbsp;&nbsp;&nbsp;-  docker login --username=krm444
 
 2) Build the image in terminal:\
 &nbsp;&nbsp;&nbsp;&nbsp;- docker build -t bigdata1:1.0 .
