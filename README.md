@@ -12,7 +12,7 @@ ________________________________________________________________________________
 
 1) Login to docker via terminal:\
 &nbsp;&nbsp;&nbsp;&nbsp;- docker login --username=krm444
--  test
+&nbsp;&nbsp;&nbsp;&nbsp;-  test
 2) Build the image in terminal:\
 &nbsp;&nbsp;&nbsp;&nbsp;- docker build -t bigdata1:1.0 .
   
